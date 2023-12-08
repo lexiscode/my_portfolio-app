@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '@frontend/base.html.twig' %}
 
 {% block title %}About Me!{% endblock %}
 
@@ -9,12 +9,17 @@
     <!-- Page Header -->
     <div class="page-header">
         <h2>.<span>about</span></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue at, hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum.</p>
+        <p>
+        Experienced backend developer with a 2+ years track record in solving complex challenges. 
+        Proven in delivering high-impact solutions and boosting team productivity by 15% through 
+        effective knowledge transfer and empowerment.
+        </p>
         <div class="template-btn">
-            <a href="#" class="pointer-href">Hire me</a>
-            <a href="#" class="pointer-href">Download CV</a>
+            <a href="/contact" class="pointer-href">Hire me</a>
+            <a href="{{ asset('resume.pdf') }}" class="pointer-href">Download CV</a>
         </div>
-    </div> <!-- Page Header End -->
+    </div> 
+    <!-- Page Header End -->
     <div class="separator"></div>
     <!-- Services -->
     <div class="my-services subtitle">
@@ -27,7 +32,7 @@
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <h4 class="body-font">Web Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
+                        <p>I have notable proficiency in CMS, particularly WordPress, from 2018 till present.</p>
                     </div>
                 </div>
             </div>
@@ -38,18 +43,7 @@
                             <i class="fab fa-evernote"></i>
                         </div>
                         <h4 class="body-font">Web Develop</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                <div class="single-service text-center">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-drafting-compass"></i>
-                        </div>
-                        <h4 class="body-font">Branding</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
+                        <p>I build customed server-side web applications from scratch, based on client's needs.</p>
                     </div>
                 </div>
             </div>
@@ -59,8 +53,8 @@
                         <div class="service-icon">
                             <i class="fas fa-anchor"></i>
                         </div>
-                        <h4 class="body-font">Marketing</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
+                        <h4 class="body-font">API Develop</h4>
+                        <p>I develop API applications to better enhance the functionality of clients' web applications.</p>
                     </div>
                 </div>
             </div>
@@ -68,10 +62,10 @@
                 <div class="single-service text-center">
                     <div class="service-content">
                         <div class="service-icon">
-                            <i class="fas fa-share-alt"></i>
+                            <i class="fas fa-book"></i>
                         </div>
-                        <h4 class="body-font">Social Media</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
+                        <h4 class="body-font">Tutoring</h4>
+                        <p>Proactive team player who have exceled in people management, tutoring and mentoring others.</p>
                     </div>
                 </div>
             </div>
@@ -81,8 +75,19 @@
                         <div class="service-icon">
                             <i class="fas fa-chess"></i>
                         </div>
-                        <h4 class="body-font">Consulting</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloribus repellendus.</p>
+                        <h4 class="body-font">Brand Ambassador</h4>
+                        <p>I am available to serve as a brand ambassador for your tech company.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <div class="single-service text-center">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 class="body-font">Researcher</h4>
+                        <p>I analyze technology trends in the market, evaluate competitors and industry developments.</p>
                     </div>
                 </div>
             </div>
@@ -93,33 +98,33 @@
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="funfact funfact-mb text-center">
-                    <h3 class="counter">480</h3>
+                    <h3 class="counter">10</h3>
                     <span class="title">Happy Clients</span>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="funfact funfact-mb text-center">
-                    <h3 class="counter">850</h3>
+                    <h3 class="counter">35</h3>
                     <span class="title">Projects Done</span>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="funfact text-center">
-                    <h3 class="counter percent">260</h3>
-                    <span class="title">Cups Coffee</span>
+                    <h3 class="counter">2</h3>
+                    <span class="title">Got Awards</span>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="funfact text-center">
-                    <h3 class="counter">10</h3>
-                    <span class="title">Got Awards</span>
+                    <h3 class="counter percent">3</h3>
+                    <span class="title">Tech Meetups</span>
                 </div>
             </div>
         </div>
     </div> <!-- Funfact Area End -->
     <!-- Pricing Area -->
     <div class="pricing subtitle mb-70">
-        <h3 class="mb-40">.<span>price</span> list</h3>
+        <h3 class="mb-40">.<span>contract price</span> list</h3>
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="pricing-box text-center mb-30">
@@ -128,21 +133,18 @@
                     </div>
                     <div class="pricing-price">
                         <h3>
-                            <small>$</small>349.<span>99</span>
+                            <small>$</small>199.<span>99</span>
                         </h3>
                     </div>
                     <div class="service-list">
                         <ul>
-                            <li><i class="fas fa-laptop-code"></i> Web design</li>
-                            <li><i class="fab fa-evernote"></i> Web Develop</li>
-                            <li><i class="fas fa-drafting-compass"></i> Branding</li>
-                            <li><i class="fas fa-anchor"></i> Marketing</li>
-                            <li><i class="fas fa-share-alt"></i> Social Media</li>
-                            <li><i class="fas fa-chess"></i> Consulting</li>
+                            <li><i class="fas fa-laptop-code"></i>1-3 Webpage(s)</li>
+                            <li><i class="fab fa-evernote"></i>6-Month Maintenance</li>
+                            <li><i class="fas fa-anchor"></i> Free Domain/Hosting</li>
                         </ul>
                     </div>
                     <div class="get-started">
-                        <a href="#">Get Started <i class="fas fa-chevron-right"></i></a>
+                        <a href="/contact">Reach Me<i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -153,21 +155,20 @@
                     </div>
                     <div class="pricing-price">
                         <h3>
-                            <small>$</small>549.<span>99</span>
+                            <small>$</small>349.<span>99</span>
                         </h3>
                     </div>
                     <div class="service-list">
                         <ul>
-                            <li><i class="fas fa-laptop-code"></i> Web design</li>
-                            <li><i class="fab fa-evernote"></i> Web Develop</li>
-                            <li><i class="fas fa-drafting-compass"></i> Branding</li>
-                            <li><i class="fas fa-anchor"></i> Marketing</li>
-                            <li><i class="fas fa-share-alt"></i> Social Media</li>
-                            <li><i class="fas fa-chess"></i> Consulting</li>
+                            <li><i class="fas fa-laptop-code"></i>Multi Webpages</li>
+                            <li><i class="fab fa-evernote"></i>Web Design/WordPress</li>
+                            <li><i class="fas fa-drafting-compass"></i>Free Themes/Plugins</li>
+                            <li><i class="fas fa-anchor"></i>Free Domain/Hosting</li>
+                            <li><i class="fas fa-share-alt"></i>6-Month Maintenance</li>
                         </ul>
                     </div>
                     <div class="get-started">
-                        <a href="#">Get Started <i class="fas fa-chevron-right"></i></a>
+                        <a href="/contact">Reach Me<i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -178,55 +179,74 @@
                     </div>
                     <div class="pricing-price">
                         <h3>
-                            <small>$</small>849.<span>99</span>
+                            <small>$</small>549.<span>99</span>
                         </h3>
                     </div>
                     <div class="service-list">
                         <ul>
-                            <li><i class="fas fa-laptop-code"></i> Web design</li>
-                            <li><i class="fab fa-evernote"></i> Web Develop</li>
-                            <li><i class="fas fa-drafting-compass"></i> Branding</li>
-                            <li><i class="fas fa-anchor"></i> Marketing</li>
-                            <li><i class="fas fa-share-alt"></i> Social Media</li>
-                            <li><i class="fas fa-chess"></i> Consulting</li>
+                            <li><i class="fas fa-laptop-code"></i>Multi Webpages</li>
+                            <li><i class="fas fa-chess"></i>Built from Scratch</li>
+                            <li><i class="fab fa-evernote"></i>Custom Integrations</li>
+                            <li><i class="fas fa-drafting-compass"></i>Custom Admin Panels</li>
+                            <li><i class="fas fa-anchor"></i>Free Domain/Hosting</li>
+                            <li><i class="fas fa-share-alt"></i>6-Month Maintenance</li> 
                         </ul>
                     </div>
                     <div class="get-started">
-                        <a href="#">Get Started <i class="fas fa-chevron-right"></i></a>
+                        <a href="#">Reach Me<i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- Pricing Area End -->        
+    </div> 
+    <!-- Pricing Area End -->        
     <!-- Clients Testimonial -->
     <div class="clients-testimonial subtitle">
-        <h3 class="mb-40">.<span>cool</span> feedback</h3>
+        <h3 class="mb-40">.<span>cool</span> testimonials</h3>
         <div class="clients-testimonial-active owl-carousel">
             <div class="single-testimonials">
                 <div class="client-image">
-                    <img src="img/clients/client-1.jpg" alt="clients">
+                    <img src="{{ asset("frontend/img/clients/client-1.jpg") }}" alt="clients">
                 </div>
                 <div class="feedback-text">
-                    <p class="client-feedback">It was exactly we looking for. Fariha Anjum done a great job for our projects. Definitely we will use her for our every project in future works.</p>
-                    <p class="client-name">Willium Pillard, <span>Comic Agent</span></p>
+                    <p class="client-feedback">As his tutor, Alexander excelled academically and demonstrated a strong aptitude for backend and API developments, particularly within the Symfony PHP framework.</p>
+                    <p class="client-name">Hennadii Shvedko, <span>Senior PHP Software Engineer</span></p>
                 </div>
             </div>
             <div class="single-testimonials">
                 <div class="client-image">
-                    <img src="img/clients/client-2.jpg" alt="clients">
+                    <img src="{{ asset("frontend/img/clients/client-2.jpg") }}" alt="clients">
                 </div>
                 <div class="feedback-text">
-                    <p class="client-feedback">It was exactly we looking for. Fariha Anjum done a great job for our projects. Definitely we will use her for our every project in future works.</p>
-                    <p class="client-name">Digi Marshal, <span>MediaArt Inc.</span></p>
+                    <p class="client-feedback">Alexander is a motivated hard-working developer, eager to work and study. He worked on complex tasks and always solved hard tasks easily.</p>
+                    <p class="client-name">Yauheni Radzivonau, <span>Senior PHP Software Engineer</span></p>
                 </div>
             </div>
             <div class="single-testimonials">
                 <div class="client-image">
-                    <img src="img/clients/client-3.jpg" alt="clients">
+                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
                 </div>
                 <div class="feedback-text">
-                    <p class="client-feedback">It was exactly we looking for. Fariha Anjum done a great job for our projects. Definitely we will use her for our every project in future works.</p>
-                    <p class="client-name">Black Jogan, <span>Shudhu Media</span></p>
+                    <p class="client-feedback">Alex's ability to quickly grasp complex concepts and his dedication to mastering PHP sets him apart. He consistently demonstrated excellent problem-solving skills and contributed positively to group projects, showcasing not only technical proficiency but also effective communication and collaboration.</p>
+                    <p class="client-name">Raul Krivian, <span>PHP/Laravel Developer</span></p>
+                </div>
+            </div>
+            <div class="single-testimonials">
+                <div class="client-image">
+                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
+                </div>
+                <div class="feedback-text">
+                    <p class="client-feedback">Alex was a standout colleague with a protagonist personality who excelled in our PHP Backend Development internship at Jagaad Academy. His exceptional qualities, intelligence, and unyielding enthusiasm for learning truly set him apart.</p>
+                    <p class="client-name">Victoria-Elena Lazar, <span>Junior PHP Developer</span></p>
+                </div>
+            </div>
+            <div class="single-testimonials">
+                <div class="client-image">
+                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
+                </div>
+                <div class="feedback-text">
+                    <p class="client-feedback">Alex consistently exhibit a strong work ethic and demonstrate a commitment to excellence. His willingness to assist others through voluntary tutoring greatly enriched our academic environment, benefiting the entire team. He is a highly productive, hardworking, motivated, and proactive team player.</p>
+                    <p class="client-name">Demarillac Izere, <span>Junior Software Developer</span></p>
                 </div>
             </div>
         </div>            
@@ -234,12 +254,12 @@
     <!-- Clients Testimonial End -->
     <!-- Logo Carousel -->
     <div class="clients-logo-carousel owl-carousel text-center">
-        <img src="img/clients/1.png" alt="logo">
-        <img src="img/clients/2.png" alt="logo">
-        <img src="img/clients/3.png" alt="logo">
-        <img src="img/clients/4.png" alt="logo">
-        <img src="img/clients/5.png" alt="logo">
-        <img src="img/clients/6.png" alt="logo">
+        <img src="{{ asset("frontend/img/clients/1.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/2.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/3.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/4.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/5.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/6.png") }}" alt="logo">
     </div> 
     <!-- Logo Carousel End -->
 </main> 

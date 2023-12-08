@@ -1,6 +1,6 @@
 {% extends '@frontend/base.html.twig' %}
 
-{% block title %}Hi Welcome!{% endblock %}
+{% block title %}Hi there, Welcome!{% endblock %}
 
 {% block body %}
 
@@ -11,16 +11,19 @@
         <!-- Particles Animation -->
         <div id="particles-js"></div>
         <!-- Particles Animation End -->
+        
         <!-- Author Name, My Name, Home Page Title -->
         <div class="home-title">
             <h3>Hello World! I’m</h3>
             <h1 class="theme-color">Alexander Nwokorie</h1>
             <h4>Junior PHP Developer!</h4>
             <div class="template-btn">
-                <a href="#" class="pointer-href">Hire me</a>
-                <a href="#" class="pointer-href">Download CV</a>
+                <a href="/contact" class="pointer-href">Hire me</a>
+                <a href="{{ asset('resume.pdf') }}" class="pointer-href" target="_blank">Download CV</a>
             </div>
-        </div> <!-- Author Name, My Name, Home Page Title End -->
+        </div> 
+        <!-- Author Name, My Name, Home Page Title End -->
+
         <!-- Dribbble Slider -->
         <div class="dribbble-btn pointer-href">
             <button data-toggle="tooltip" data-placement="left" title="Recent Dribbbles"><i class="fas fa-basketball-ball"></i></button>
@@ -37,7 +40,7 @@
                         <a href="#" class="read-more-btn pointer-href">Go to dribbble</a>
                     </div>
                     <div class="slider-image">
-                        <img src="img/slider/1.jpg" alt="slide image">
+                        <img src="{{ asset("frontend/img/slider/1.jpg") }}" alt="slide image">
                     </div>
                 </div>
                 <div class="slider-box d-flex align-items-center">
@@ -47,7 +50,7 @@
                         <a href="#" class="read-more-btn pointer-href">Go to dribbble</a>
                     </div>
                     <div class="slider-image">
-                        <img src="img/slider/2.jpg" alt="slide image">
+                        <img src="{{ asset("frontend/img/slider/2.jpg") }}" alt="slide image">
                     </div>
                 </div>
                 <div class="slider-box d-flex align-items-center">
@@ -57,7 +60,7 @@
                         <a href="#" class="read-more-btn pointer-href">Go to dribbble</a>
                     </div>
                     <div class="slider-image">
-                        <img src="img/slider/3.jpg" alt="slide image">
+                        <img src="{{ asset("frontend/img/slider/3.jpg") }}" alt="slide image">
                     </div>
                 </div>
             </div>
