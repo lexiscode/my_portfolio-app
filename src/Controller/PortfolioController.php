@@ -15,4 +15,12 @@ class PortfolioController extends AbstractController
             'controller_name' => 'PortfolioController',
         ]);
     }
+
+    #[Route('/portfolio-detail', name: 'app_portfolio_detail')]
+    public function portfolioDetail(): Response
+    {
+        return $this->render('frontend/portfolio-details/index.html.twig', [
+            'controller_name' => 'PortfolioController',
+        ]);
+    }
 }
