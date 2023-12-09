@@ -15,4 +15,12 @@ class BlogController extends AbstractController
             'controller_name' => 'BlogController',
         ]);
     }
+
+    #[Route('/blog-detail', name: 'app_blog_detail')]
+    public function blogDetail(): Response
+    {
+        return $this->render('frontend/blog-details/index.html.twig', [
+            'controller_name' => 'BlogController',
+        ]);
+    }
 }
