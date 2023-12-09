@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '@frontend/base.html.twig' %}
 
 {% block title %}My Resume!{% endblock %}
 
@@ -9,12 +9,14 @@
     <!-- Page Header -->
     <div class="page-header">
         <h2>.<span>resume</span></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in
-            orci in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue
-            at, hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum.</p>
+        <p>
+        Experienced backend developer with a 2+ years track record in solving complex challenges. 
+        Proven in delivering high-impact solutions and boosting team productivity by 15% through 
+        effective knowledge transfer and empowerment.
+        </p>
         <div class="template-btn">
-            <a href="contact.html" class="pointer-href">Hire me</a>
-            <a href="#" class="pointer-href">Download CV</a>
+            <a href="/contact" class="pointer-href">Hire me</a>
+            <a href="{{ asset('resume.pdf') }}" class="pointer-href">Download CV</a>
         </div>
     </div> <!-- Page Header End -->
     <div class="separator"></div>
@@ -28,26 +30,16 @@
                         <div class="timeline clearfix">
                             <div class="timeline-item clearfix">
                                 <div class="timeline-left">
-                                    <h6 class="item-period body-font">2015</h6>
-                                    <span class="item-company">Oxford University</span>
+                                    <h6 class="item-period body-font">2014-2019</h6>
+                                    <span class="item-company">University Of Lagos</span>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="timeline-right">
-                                    <h6 class="item-title body-font">UI/UX Designer</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque.</p>
+                                    <h6 class="item-title body-font">Met. & Mat. Engineering</h6>
+                                    <p>A bachelor's degree holder who have as well completed the National Youth Service Corp (NYSC) program.</p>
                                 </div>
                             </div>
-                            <div class="timeline-item clearfix">
-                                <div class="timeline-left">
-                                    <h6 class="item-period body-font">2016</h6>
-                                    <span class="item-company">Maxon University</span>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="timeline-right">
-                                    <h6 class="item-title body-font">Web Developer</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque.</p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- Timeline - Experience -->
@@ -56,35 +48,70 @@
                         <div class="timeline clearfix">
                             <div class="timeline-item clearfix">
                                 <div class="timeline-left">
-                                    <h6 class="item-period body-font">2017-Active</h6>
-                                    <span class="item-company">Omuk Company</span>
+                                    <h6 class="item-period body-font">Nov.-Active</h6>
+                                    <span class="item-company">JAGAAD Digital Solutions</span>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="timeline-right">
-                                    <h6 class="item-title body-font">Web Developer</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque.</p>
+                                    <h6 class="item-title body-font">Alumni & Engagement Coordinator</h6>
+                                    <p>Tasked with overseeing and improving the involvement of technology alumni and the wider community with Jagaad Academy.</p>
                                 </div>
                             </div>
                             <div class="timeline-item clearfix">
                                 <div class="timeline-left">
-                                    <h6 class="item-period body-font">2015-2017</h6>
-                                    <span class="item-company">Jatra Link</span>
+                                    <h6 class="item-period body-font">April-November</h6>
+                                    <span class="item-company">Jagaad Academy, Italy</span>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="timeline-right">
-                                    <h6 class="item-title body-font">UI/UX Designer</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque.</p>
+                                    <h6 class="item-title body-font">PHP Backend Intern</h6>
+                                    <p>As a member of an international community of developers, I received training from senior 
+                                    developers in highly sought-after market technologies. Additionally, I emerged as the 
+                                    top-ranked intern in my cohort.
+                                    </p>
                                 </div>
                             </div>
                             <div class="timeline-item clearfix">
                                 <div class="timeline-left">
-                                    <h6 class="item-period body-font">2014-2015</h6>
-                                    <span class="item-company">Catelog Media</span>
+                                    <h6 class="item-period body-font">Sept.22'-Apr.23'</h6>
+                                    <span class="item-company">ALX, Africa</span>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="timeline-right">
-                                    <h6 class="item-title body-font">Branding Designer</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci in, pellentesque.</p>
+                                    <h6 class="item-title body-font">Software Engineering</h6>
+                                    <p>I participated in two program sprints, acquiring proficiency in both C and Python programming 
+                                    languages. Notably, I was recognized as one of the top 5 superstar performers among 30,000 students 
+                                    in the program.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item clearfix">
+                                <div class="timeline-left">
+                                    <h6 class="item-period body-font">Jan.19'-Sept.22'</h6>
+                                    <span class="item-company">Research</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="timeline-right">
+                                    <h6 class="item-title body-font">Web Designing</h6>
+                                    <p>
+                                    I proactively acquired skills and transitioned into a role as a self-employed web designer 
+                                    specializing in WordPress. I proficiently utilize themes, plugins, and page builders such as 
+                                    Elementor in my design projects.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item clearfix">
+                                <div class="timeline-left">
+                                    <h6 class="item-period body-font">Jan.18'-Jan.19'</h6>
+                                    <span class="item-company">SoloLearn/Udemy</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="timeline-right">
+                                    <h6 class="item-title body-font">Basic Web Developer</h6>
+                                    <p>
+                                    Initiating my tech journey, I embarked on numerous foundational courses on SoloLearn & Udemy, earning 
+                                    certifications in key languages such as HTML, CSS, JavaScript, jQuery, Python, and PHP.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -96,32 +123,53 @@
                     <!-- Skills -->
                     <div class="skills clearfix">
                         <div class="design-skill subtitle mb-70">
-                            <h3 class="mb-40">.<span>design </span>skills</h3>
+                            <h3 class="mb-40">.<span>soft </span>skills</h3>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>Adobe Illustrator</span></div>
+                                <div class="skillbar-title"><span>Teamwork and Collaboration</span></div>
                                 <div class="skill-bar-percent">80%</div>
                                 <div class="skillbar clearfix" data-parcent="80%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>Adobe Photoshop</span></div>
+                                <div class="skillbar-title"><span>Leadership Skills</span></div>
                                 <div class="skill-bar-percent">90%</div>
                                 <div class="skillbar clearfix" data-parcent="90%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>Adobe XD</span></div>
-                                <div class="skill-bar-percent">60%</div>
-                                <div class="skillbar clearfix" data-parcent="60%">
+                                <div class="skillbar-title"><span>Communication Skills</span></div>
+                                <div class="skill-bar-percent">90%</div>
+                                <div class="skillbar clearfix" data-parcent="90%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>Cinema 4D</span></div>
-                                <div class="skill-bar-percent">70%</div>
-                                <div class="skillbar clearfix" data-parcent="70%">
+                                <div class="skillbar-title"><span>Time Management</span></div>
+                                <div class="skill-bar-percent">90%</div>
+                                <div class="skillbar clearfix" data-parcent="90%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Problem-solving</span></div>
+                                <div class="skill-bar-percent">80%</div>
+                                <div class="skillbar clearfix" data-parcent="80%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Empathy</span></div>
+                                <div class="skill-bar-percent">80%</div>
+                                <div class="skillbar clearfix" data-parcent="80%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Ability to Teach</span></div>
+                                <div class="skill-bar-percent">90%</div>
+                                <div class="skillbar clearfix" data-parcent="90%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
@@ -129,21 +177,57 @@
                         <div class="developing-skill subtitle">
                             <h3 class="mb-40">.<span>developing </span>skills</h3>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>HTML/CSS</span></div>
+                                <div class="skillbar-title"><span>HTML/CSS/JavaScript</span></div>
                                 <div class="skill-bar-percent">90%</div>
                                 <div class="skillbar clearfix" data-parcent="90%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
+                            
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>Javascript</span></div>
+                                <div class="skillbar-title"><span>Bootstrap/jQuery</span></div>
                                 <div class="skill-bar-percent">70%</div>
                                 <div class="skillbar clearfix" data-parcent="70%">
                                     <div class="skillbar-bar"></div>
                                 </div>
                             </div>
                             <div class="single-skill">
-                                <div class="skillbar-title"><span>PHP</span></div>
+                                <div class="skillbar-title"><span>MySQL/Relational Database</span></div>
+                                <div class="skill-bar-percent">70%</div>
+                                <div class="skillbar clearfix" data-parcent="70%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Vanilla PHP</span></div>
+                                <div class="skill-bar-percent">80%</div>
+                                <div class="skillbar clearfix" data-parcent="80%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>OOP/PDO & Design Patterns</span></div>
+                                <div class="skill-bar-percent">70%</div>
+                                <div class="skillbar clearfix" data-parcent="70%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Laravel/Symfony/Slim</span></div>
+                                <div class="skill-bar-percent">80%</div>
+                                <div class="skillbar clearfix" data-parcent="80%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Rest API/GraphQL</span></div>
+                                <div class="skill-bar-percent">80%</div>
+                                <div class="skillbar clearfix" data-parcent="80%">
+                                    <div class="skillbar-bar"></div>
+                                </div>
+                            </div>
+                            <div class="single-skill">
+                                <div class="skillbar-title"><span>Git/Docker</span></div>
                                 <div class="skill-bar-percent">80%</div>
                                 <div class="skillbar clearfix" data-parcent="80%">
                                     <div class="skillbar-bar"></div>
