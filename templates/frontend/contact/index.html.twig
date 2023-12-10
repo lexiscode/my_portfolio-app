@@ -45,7 +45,19 @@
         <div class="col-xl-6 col-lg-6">                      
             <!-- Contact Form -->
             <div class="contact_form">
-                <form class="contact__form" method="post" action="">
+
+                {# Flash alerts displays #}
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {{ form_errors(contactForm) }}
+                
+                {{ form_start(contactForm) }}
                     <!-- Form Message -->
                     <div class="row">
                         <div class="col-12">
@@ -57,20 +69,22 @@
                     </div> <!-- Form Message End -->
                     <!-- Form Element -->
                     <div class="form_input_box">
-                        <input class="pointer-input" name="name" type="text" placeholder="Your name" required>
+                        {{ form_row(contactForm.name, {'label': false})}}
                     </div>
                     <div class="form_input_box">
-                        <input class="pointer-input" name="email" type="email" placeholder="Your email" required>
+                        {{ form_row(contactForm.email, {'label': false})}}
                     </div>
                     <div class="form_input_box">
-                        <input class="pointer-input" name="subject" type="text" placeholder="Subject" required>
+                        {{ form_row(contactForm.subject, {'label': false})}}
                     </div>
                     <div class="form_input_box">
-                        <textarea class="pointer-input" name="message" rows="3" placeholder="Your message" required></textarea>
+                        {{ form_row(contactForm.message, {'label': false})}}
                     </div>
+
                     <button class="form-submit-btn pointer-href" name="submit" type="submit">Send Message</button>
                     <!-- Form Element End -->
-                </form>
+                {{ form_end(contactForm) }}
+
             </div> 
             <!-- Contact Form End -->
         </div>
@@ -88,3 +102,4 @@
 <!-- Single page end -->
 
 {% endblock %}
+
