@@ -14,16 +14,13 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Testimonial</h1>
+                        <h1>Testimonials</h1>
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
                             <ol class="breadcrumb p-0 m-b-0">
                                 <li class="breadcrumb-item">
                                     <a href="{{ path('app_dashboard') }}"><i class="ti ti-home"></i></a>
-                                </li>
-                                <li class="breadcrumb-item">
-                                    Dashboard
                                 </li>
                                 <li class="breadcrumb-item active text-primary" aria-current="page">Testimonial</li>
                             </ol>
@@ -40,8 +37,20 @@
                     <div class="card-header d-flex align-items-center justify-content-between"> <!---->
                         <h4 class="card-title">All recommended feedbacks</h4>
                         <div class="dropdown">
-                            <a class="btn btn-xs" href="{{ path('app_create_testimonial') }}">Create Feedback </a>
+                            <a class="btn btn-primary" href="{{ path('create_testimonial') }}" aria-haspopup="true" aria-expanded="false">
+                                Add New
+                            </a>
                         </div>
+
+                        {# Flash alerts displays #}
+                        {% for type, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
                     </div>
                     <div class="card-body scrollbar scroll_dark pt-0" style="max-height: 350px;">
                         <div class="datatable-wrapper table-responsive">
@@ -57,21 +66,29 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-muted">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <div class="bg-img">
-                                                <img class="img-fluid" src="{{ asset("backend/assets/img/avtar/01.jpg") }}" alt="user">
-                                            </div>
-                                            <p>Adrian Demiandro</p>
-                                        </td>
-                                        <td>Support Lead</td>
-                                        <td>He is good</td>
-                                        <td>
-                                            <a href="javascript:void(0)" class="mr-2"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></i></a>
-                                        </td>
-                                    </tr>
+                                {% if testimonials|length > 0 %}
+                                    {% for testimonial in testimonials %}
+                                        <tr>
+                                            <td>{{ testimonial.id }}</td>
+                                            <td>
+                                                <div class="bg-img">
+                                                    <img class="img-fluid" src="{{ testimonial.image }}" alt="photo">
+                                                </div>
+                                                <p>{{ testimonial.name }}</p>
+                                            </td>
+                                            <td>{{ testimonial.position }}</td>
+                                            <td>{{ testimonial.comment }}</td>
+                                            <td>
+                                                
+                                                <a href="/admin/testimonial/edit/{{ testimonial.id }}" class="mr-2"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a>
+                                                <a href="/admin/testimonial/delete/{{ testimonial.id }}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></i></a>
+                                                
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No testimonials found.</p>
+                                {% endif %}
                                 </tbody>
                                 
                             </table>
@@ -79,8 +96,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- end row -->
+        
 
         </div>
         <!-- end row -->

@@ -2,27 +2,133 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Testimonial;
+use App\Form\TestimonialFormType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[IsGranted('ROLE_USER')]
 class TestimonialController extends AbstractController
 {
+    private $em;
+    private $testimonialRepository;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+        $this->testimonialRepository = $em->getRepository(Testimonial::class);
+    }
+    
     #[Route('/admin/testimonial', name: 'app_testimonial')]
     public function index(): Response
     {
+        // Retrieve courses from the database
+        $testimonials = $this->testimonialRepository->findAll();
+
         return $this->render('backend/testimonial/index.html.twig', [
-            'controller_name' => 'AboutController',
+            'testimonials' => $testimonials
         ]);
     }
 
-    #[Route('/admin/testimonial/create', name: 'app_create_testimonial')]
-    public function create(): Response
+    #[Route('/admin/testimonial/create', name: 'create_testimonial')]
+    public function create(Request $request): Response
     {
+        $testimonial = new Testimonial();
+
+        $form = $this->createForm(TestimonialFormType::class, $testimonial);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newTestimonial = $form->getData();
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $newFileName = uniqid() . '.' . $image->guessExtension();
+                try {
+                    $image->move(
+                        $this->getParameter('kernel.project_dir') . '/public/uploads/testimonial',
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+                $newTestimonial->setImage('/uploads/testimonial/' . $newFileName);
+            }
+
+            $this->em->persist($newTestimonial);
+            $this->em->flush();
+
+            return $this->redirectToRoute('app_testimonial');
+        }
+        
         return $this->render('backend/testimonial/create.html.twig', [
-            'controller_name' => 'AboutController',
+            'testimonialForm' => $form->createView()
         ]);
     }
+
+
+    #[Route('/admin/testimonial/edit/{id}', name: 'edit_testimonial')]
+    public function edit($id, Request $request): Response
+    {
+        // Find the testimonial by its ID
+        $testimonial = $this->testimonialRepository->find($id);
+
+        if (!$testimonial){
+            throw $this->createNotFoundException('Testimonial not found');
+        }
+
+        $form = $this->createForm(TestimonialFormType::class, $testimonial);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $newTestimonial = $form->getData();
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $newFileName = uniqid() . '.' . $image->guessExtension();
+                try {
+                    $image->move(
+                        $this->getParameter('kernel.project_dir') . '/public/uploads/testimonial',
+                        $newFileName
+                    );
+                } catch (FileException $e) {
+                    return new Response($e->getMessage());
+                }
+                $newTestimonial->setImage('/uploads/testimonial/' . $newFileName);
+            }
+
+            $this->em->persist($newTestimonial);
+            
+            $this->em->flush();
+
+            return $this->redirectToRoute('app_testimonial');
+        }
+        
+        return $this->render('backend/testimonial/edit.html.twig', [
+            'testimonialForm' => $form->createView()
+        ]);
+    }
+
+
+    #[Route('/admin/testimonial/delete/{id}', methods:['GET', 'DELETE'], name: 'delete_testimonial')]
+    public function delete($id): Response
+    {
+        
+        $testimonial = $this->testimonialRepository->find($id);
+
+        $this->em->remove($testimonial);
+        $this->em->flush();
+
+        // Add a flash message and redirect to the main course page
+        $this->addFlash('success', 'The testimonial has been deleted successfully!');
+
+        return $this->redirectToRoute('app_testimonial');
+    }
 }
+
