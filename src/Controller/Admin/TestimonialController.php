@@ -63,6 +63,9 @@ class TestimonialController extends AbstractController
             $this->em->persist($newTestimonial);
             $this->em->flush();
 
+            // Add a flash message for creation success
+            $this->addFlash('success', 'The testimonial has been created successfully!');
+
             return $this->redirectToRoute('app_testimonial');
         }
         
@@ -104,8 +107,10 @@ class TestimonialController extends AbstractController
             }
 
             $this->em->persist($newTestimonial);
-            
             $this->em->flush();
+
+            // Add a flash message for creation success
+            $this->addFlash('success', 'The testimonial has been updated successfully!');
 
             return $this->redirectToRoute('app_testimonial');
         }
@@ -125,7 +130,7 @@ class TestimonialController extends AbstractController
         $this->em->remove($testimonial);
         $this->em->flush();
 
-        // Add a flash message and redirect to the main course page
+        // Add a flash message for deletion success
         $this->addFlash('success', 'The testimonial has been deleted successfully!');
 
         return $this->redirectToRoute('app_testimonial');
