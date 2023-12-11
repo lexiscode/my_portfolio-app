@@ -28,7 +28,7 @@ class Contact
     private ?string $message = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    public ?\DateTimeImmutable $created_at = null;
 
     public function __construct()
     {
