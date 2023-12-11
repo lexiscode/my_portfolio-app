@@ -65,8 +65,9 @@
                                             {# <span>mail.created_at|date('Y-m-dH:i:s') --}}</span> #}
                                             <span>{{ mail.created_at|ago }}</span>
                                         </div>
-                                        <p>{{ mail.email }}</p>
-                                        <p>{{ mail.subject }}</p>
+                                        <p>Email: {{ mail.email }}</p>
+                                        <p>Title: {{ mail.subject }}</p>
+                                        <p>Message:</p>
                                         <p>{{ mail.message }}</p>
                                         <div>
                                             <ul class="nav align-items-center">
