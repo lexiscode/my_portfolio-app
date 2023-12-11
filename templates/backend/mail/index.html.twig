@@ -1,0 +1,120 @@
+{% extends '@backend/base.html.twig' %}
+
+{% block title %}Testimonial - Admin Panel!{% endblock %}
+
+{% block body %}
+
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                    <div class="page-title mb-2 mb-sm-0">
+                        <h1>Testimonial</h1>
+                    </div>
+                    <div class="ml-auto d-flex align-items-center">
+                        <nav>
+                            <ol class="breadcrumb p-0 m-b-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('app_dashboard') }}"><i class="ti ti-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    Dashboard
+                                </li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">Testimonial</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- end page title -->
+            </div>
+        </div>
+
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-xxl-8 m-b-30">
+                <div class="card card-statistics h-100 mb-0">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <div class="card-heading">
+                            <h4 class="card-title">All recommended feedbacks</h4>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn btn-xs" href="#!">Export <i class="zmdi zmdi-download pl-1"></i> </a>
+                        </div>
+                    </div>
+                   
+                    <div class="card-body scrollbar scroll_dark pt-0" style="max-height: 350px;">
+                        <div class="datatable-wrapper table-responsive">
+                            <table id="datatable" class="table table-borderless table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>In stock</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-muted">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Cold Shoulder Bling Dress</td>
+                                        <td>$65.342</td>
+                                        <td>
+                                            <div class="progress my-3" style="height: 3px;">
+                                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-success-inverse">Active</span></td>
+                                        <td> <a class="mr-3" href="javascript:void(0);"><i class="fe fe-edit"></i></a><a href="javascript:void(0);"><i class="fe fe-trash-2"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>PlayStation 4 Pro 1TB Console</td>
+                                        <td>$47.655</td>
+                                        <td>
+                                            <div class="progress my-3" style="height: 3px;">
+                                                <div class="progress-bar" role="progressbar" style="width: 36%;" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-success-inverse">Active</span></td>
+                                        <td> <a class="mr-3" href="javascript:void(0);"><i class="fe fe-edit"></i></a><a href="javascript:void(0);"><i class="fe fe-trash-2"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Extra Fine Wool Jumpers</td>
+                                        <td>$56.479</td>
+                                        <td>
+                                            <div class="progress my-3" style="height: 3px;">
+                                                <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge badge-danger-inverse">Canceled</span></td>
+                                        <td> <a class="mr-3" href="javascript:void(0);"><i class="fe fe-edit"></i></a><a href="javascript:void(0);"><i class="fe fe-trash-2"></i></a></td>
+                                    </tr>
+                                    
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <!-- end row -->
+
+        </div>
+        <!-- end row -->
+        
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->
+
+{% endblock %}

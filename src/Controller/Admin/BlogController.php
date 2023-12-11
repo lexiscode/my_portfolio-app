@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_USER')]
-class DashboardController extends AbstractController
+class BlogController extends AbstractController
 {
-    #[Route('/admin/dashboard', name: 'app_dashboard')]
+    #[Route('/admin/blog', name: 'app_blog')]
     public function index(): Response
     {
-        return $this->render('backend/dashboard/index.html.twig', [
+        return $this->render('backend/blog/index.html.twig', [
             'controller_name' => 'AboutController',
         ]);
     }
