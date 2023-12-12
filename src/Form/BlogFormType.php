@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Blog;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -57,7 +58,7 @@ class BlogFormType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'mapped' => false,
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Type your contents...', 'type' => 'text', 'rows' => '3'],
                 'constraints' => [
                     new NotBlank(),

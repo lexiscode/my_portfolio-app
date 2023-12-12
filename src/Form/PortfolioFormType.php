@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Portfolio;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -42,7 +43,7 @@ class PortfolioFormType extends AbstractType
                 ],
                 'constraints' => [new NotBlank()],
             ])
-            ->add('note', TextareaType::class, [
+            ->add('note', CKEditorType::class, [
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Type your notes...', 'type' => 'text', 'rows' => '3'],
                 'constraints' => [
                     new NotBlank(),
