@@ -90,8 +90,8 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $newBlog = $form->getData();
-            $image = $form->get('image')->getData();
 
+            $image = $form->get('image')->getData();
             if ($image) {
                 $newFileName = uniqid() . '.' . $image->guessExtension();
                 try {
