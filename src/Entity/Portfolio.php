@@ -31,10 +31,10 @@ class Portfolio
     private ?string $client = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $first_image = null;
+    public ?string $first_image = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $second_image = null;
+    public ?string $second_image = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;

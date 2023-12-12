@@ -1,6 +1,6 @@
 {% extends '@backend/base.html.twig' %}
 
-{% block title %}Blog - Admin Panel!{% endblock %}
+{% block title %}Portfolio - Admin Panel!{% endblock %}
 
 {% block body %}
 
@@ -14,7 +14,7 @@
                 <!-- begin page title -->
                 <div class="d-block d-sm-flex flex-nowrap align-items-center">
                     <div class="page-title mb-2 mb-sm-0">
-                        <h1>Blogs</h1>
+                        <h1>Portfolios</h1>
                     </div>
                     <div class="ml-auto d-flex align-items-center">
                         <nav>
@@ -22,7 +22,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="{{ path('app_dashboard') }}"><i class="ti ti-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item active text-primary" aria-current="page">Blog</li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">Portfolio</li>
                             </ol>
                         </nav>
                     </div>
@@ -36,9 +36,9 @@
             <div class="col-xxl-9 m-b-30">
                 <div class="card card-statistics dating-contant h-100 mb-0">
                     <div class="card-header d-flex align-items-center justify-content-between"> <!---->
-                        <h4 class="card-title">All my blogs</h4>
+                        <h4 class="card-title">All my portfolios</h4>
                         <div class="dropdown">
-                            <a class="btn btn-primary" href="{{ path('create_blog') }}" aria-haspopup="true" aria-expanded="false">
+                            <a class="btn btn-primary" href="{{ path('create_portfolio') }}" aria-haspopup="true" aria-expanded="false">
                                 Add New
                             </a>
                         </div>
@@ -60,38 +60,35 @@
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">#</th>
-                                        <th class="border-top-0">Title</th>
-                                        <th class="border-top-0">Author</th>
-                                        <th class="border-top-0">Brand</th>
+                                        <th class="border-top-0">Name</th>
+                                        <th class="border-top-0">Category</th>
+                                        <th class="border-top-0">Technologies Used</th>
                                         <th class="border-top-0">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-muted">
-                                {% if blogs|length > 0 %}
-                                    {% for blog in blogs %}
+                                {% if portfolios|length > 0 %}
+                                    {% for portfolio in portfolios %}
                                         <tr>
-                                            <td>{{ blog.id }}</td>
+                                            <td>{{ portfolio.id }}</td>
                                             <td>
                                                 <div class="bg-img">
-                                                    <img class="img-fluid" src="{{ blog.image }}" alt="photo">
+                                                    <img class="img-fluid" src="{{ portfolio.first_image }}" alt="photo">
                                                 </div>
-                                                <p>{{ blog.title }}</p>
+                                                <p>{{ portfolio.name }}</p>
                                             </td>
-                                            <td>{{ blog.author }}</td>
-                                            <td>{{ blog.brand }}</td>
+                                            <td>{{ portfolio.category }}</td>
+                                            <td>{{ portfolio.technology }}</td>
                                             <td>
-                                                
-                                                <a href="/admin/blog/edit/{{ blog.id }}" class="mr-2"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a>
-                                                <a href="/admin/blog/delete/{{ blog.id }}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></i></a>
-                                                
+                                                <a href="/admin/portfolio/edit/{{ portfolio.id }}" class="mr-2"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a>
+                                                <a href="/admin/portfolio/delete/{{ portfolio.id }}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></i></a>
                                             </td>
                                         </tr>
                                     {% endfor %}
                                 {% else %}
-                                    <p>No blogs found.</p>
+                                    <p>No portfolio found.</p>
                                 {% endif %}
-                                </tbody>
-                                
+                                </tbody>   
                             </table>
                         </div>
                     </div>
@@ -100,10 +97,10 @@
         
         </div>
         <!-- end row -->
-        
     </div>
     <!-- end container-fluid -->
 </div>
 <!-- end app-main -->
 
 {% endblock %}
+

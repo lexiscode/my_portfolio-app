@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Portfolio;
 use App\Form\PortfolioFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +25,7 @@ class PortfolioController extends AbstractController
         $this->portfolioRepository = $em->getRepository(Portfolio::class);
     }
     
-    #[Route('/admin/portfolio', name: 'app_portfolio')]
+    #[Route('/admin/portfolio', name: 'app_admin_portfolio')]
     public function index(): Response
     {
         // Retrieve blogs from the database
@@ -36,28 +37,35 @@ class PortfolioController extends AbstractController
     }
 
     #[Route('/admin/portfolio/create', name: 'create_portfolio')]
-    public function create(Request $request, Portfolio $portfolio): Response
+    public function create(Request $request): Response
     {
-        
+        $portfolio = new Portfolio;
+
         $form = $this->createForm(PortfolioFormType::class, $portfolio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $newPortfolio = $form->getData();
-            $image = $form->get('image')->getData();
 
-            if ($image) {
-                $newFileName = uniqid() . '.' . $image->guessExtension();
-                try {
-                    $image->move(
-                        $this->getParameter('kernel.project_dir') . '/public/uploads/portfolio',
-                        $newFileName
-                    );
-                } catch (FileException $e) {
-                    return new Response($e->getMessage());
-                }
-                $newPortfolio->setImage('/uploads/portfolio/' . $newFileName);
+            // Get the selected category value from the form
+            $selectedCategory = $form->get('category')->getData();
+
+            // Perform the checks and set categories accordingly
+            if ($selectedCategory === 'Vanilla PHP') {
+                $newPortfolio->setCategory('Vanilla PHP');
+            } elseif ($selectedCategory === 'Laravel') {
+                $newPortfolio->setCategory('Laravel');
+            } elseif ($selectedCategory === 'Symfony') {
+                $newPortfolio->setCategory('Symfony');
+            }elseif ($selectedCategory === 'APIs') {
+                $newPortfolio->setCategory('APIs');
             }
+
+            // Upload first image
+            $this->uploadImage($form, 'first_image', $newPortfolio);
+
+            // Upload second image
+            $this->uploadImage($form, 'second_image', $newPortfolio);
 
             $this->em->persist($newPortfolio);
             $this->em->flush();
@@ -65,12 +73,32 @@ class PortfolioController extends AbstractController
             // Add a flash message for creation success
             $this->addFlash('success', 'The portfolio has been created successfully!');
 
-            return $this->redirectToRoute('app_portfolio');
+            return $this->redirectToRoute('app_admin_portfolio');
         }
         
         return $this->render('backend/portfolio/create.html.twig', [
             'portfolioForm' => $form->createView()
         ]);
+    }
+
+    private function uploadImage(FormInterface $form, string $fieldName, Portfolio $portfolio): void
+    {
+        $image = $form->get($fieldName)->getData();
+
+        if ($image) {
+            $newFileName = uniqid() . '.' . $image->guessExtension();
+            try {
+                $image->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads/portfolio',
+                    $newFileName
+                );
+            } catch (FileException $e) {
+                throw new \Exception($e->getMessage());
+            }
+            // Dynamically construct the setter method name
+            $setterMethod = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $fieldName)));
+            $portfolio->$setterMethod('/uploads/portfolio/' . $newFileName);
+        }
     }
 
     #[Route('/admin/portfolio/edit/{id}', name: 'edit_portfolio')]
@@ -87,22 +115,27 @@ class PortfolioController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $newPortfolio = $form->getData();
-            $image = $form->get('image')->getData();
+            
+            // Get the selected category value from the form
+            $selectedCategory = $form->get('category')->getData();
 
-            if ($image) {
-                $newFileName = uniqid() . '.' . $image->guessExtension();
-                try {
-                    $image->move(
-                        $this->getParameter('kernel.project_dir') . '/public/uploads/portfolio',
-                        $newFileName
-                    );
-                } catch (FileException $e) {
-                    return new Response($e->getMessage());
-                }
-                $newPortfolio->setImage('/uploads/portfolio/' . $newFileName);
+            // Perform the checks and set categories accordingly
+            if ($selectedCategory === 'Vanilla PHP') {
+                $newPortfolio->setCategory('Vanilla PHP');
+            } elseif ($selectedCategory === 'Laravel') {
+                $newPortfolio->setCategory('Laravel');
+            } elseif ($selectedCategory === 'Symfony') {
+                $newPortfolio->setCategory('Symfony');
+            }elseif ($selectedCategory === 'APIs') {
+                $newPortfolio->setCategory('APIs');
             }
+
+            // Upload first image
+            $this->uploadImage($form, 'first_image', $newPortfolio);
+
+            // Upload second image
+            $this->uploadImage($form, 'second_image', $newPortfolio);
 
             $this->em->persist($newPortfolio);
             $this->em->flush();
@@ -110,7 +143,7 @@ class PortfolioController extends AbstractController
             // Add a flash message for creation success
             $this->addFlash('success', 'The portfolio has been updated successfully!');
 
-            return $this->redirectToRoute('app_portfolio');
+            return $this->redirectToRoute('app_admin_portfolio');
         }
         
         return $this->render('backend/portfolio/edit.html.twig', [
@@ -129,7 +162,7 @@ class PortfolioController extends AbstractController
         // Add a flash message for deletion success
         $this->addFlash('success', 'The portfolio has been deleted successfully!');
 
-        return $this->redirectToRoute('app_portfolio');
+        return $this->redirectToRoute('app_admin_portfolio');
     }
 }
 
