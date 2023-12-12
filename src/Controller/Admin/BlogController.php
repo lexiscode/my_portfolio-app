@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Blog;
+use App\Entity\Contact;
 use App\Form\BlogFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +18,13 @@ class BlogController extends AbstractController
 {
     private $em;
     private $blogRepository;
+    private $mailRepository;
 
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
         $this->blogRepository = $em->getRepository(Blog::class);
+        $this->mailRepository = $em->getRepository(Contact::class);
     }
     
     #[Route('/admin/blog', name: 'app_admin_blog')]
@@ -30,8 +33,12 @@ class BlogController extends AbstractController
         // Retrieve blogs from the database
         $blogs = $this->blogRepository->findAll();
 
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/blog/index.html.twig', [
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'mails' => $mails
         ]);
     }
 

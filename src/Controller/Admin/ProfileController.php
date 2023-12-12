@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Entity\Contact;
 use App\Form\ProfileFormType;
 use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,8 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[IsGranted('ROLE_USER')]
 class ProfileController extends AbstractController
@@ -19,11 +20,13 @@ class ProfileController extends AbstractController
     private $em;
     private $profileRepository;
     private $passwordEncoder;
+    private $mailRepository;
 
     public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $passwordEncoder)
     {
         $this->em = $em;
         $this->profileRepository = $em->getRepository(User::class);
+        $this->mailRepository = $em->getRepository(Contact::class);
         $this->passwordEncoder = $passwordEncoder;
     }
 
@@ -57,8 +60,12 @@ class ProfileController extends AbstractController
 
         }
 
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/profile/index.html.twig', [
             'profileForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 }

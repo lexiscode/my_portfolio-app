@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
 use App\Entity\Testimonial;
 use App\Form\TestimonialFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,11 +18,13 @@ class TestimonialController extends AbstractController
 {
     private $em;
     private $testimonialRepository;
+    private $mailRepository;
 
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
         $this->testimonialRepository = $em->getRepository(Testimonial::class);
+        $this->mailRepository = $em->getRepository(Contact::class);
     }
     
     #[Route('/admin/testimonial', name: 'app_testimonial')]
@@ -30,8 +33,12 @@ class TestimonialController extends AbstractController
         // Retrieve courses from the database
         $testimonials = $this->testimonialRepository->findAll();
 
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/testimonial/index.html.twig', [
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'mails' => $mails
         ]);
     }
 

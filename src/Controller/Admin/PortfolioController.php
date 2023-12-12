@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
 use App\Entity\Portfolio;
 use App\Form\PortfolioFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,11 +19,13 @@ class PortfolioController extends AbstractController
 {
     private $em;
     private $portfolioRepository;
+    private $mailRepository;
 
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
         $this->portfolioRepository = $em->getRepository(Portfolio::class);
+        $this->mailRepository = $em->getRepository(Contact::class);
     }
     
     #[Route('/admin/portfolio', name: 'app_admin_portfolio')]
@@ -31,8 +34,12 @@ class PortfolioController extends AbstractController
         // Retrieve blogs from the database
         $portfolios = $this->portfolioRepository->findAll();
 
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/portfolio/index.html.twig', [
-            'portfolios' => $portfolios
+            'portfolios' => $portfolios,
+            'mails' => $mails
         ]);
     }
 
