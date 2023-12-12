@@ -94,4 +94,8 @@
 </div>
 <!-- end app-main -->
 
+
+{# Included the topbar and passed the 'mails' variable to be used inside the topbar file #}
+{% include 'backend/topbar/index.html.twig' with {'mails': mails} %}
+
 {% endblock %}
