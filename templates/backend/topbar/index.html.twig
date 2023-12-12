@@ -56,9 +56,11 @@
                             </div>
                             <div class="p-4">
                                 <a class="dropdown-item d-flex nav-link" href="{{ path('app_profile', {'id': 1}) }}">
-                                    <i class="fa fa-user pr-2 text-success"></i> Profile</a>
+                                    <i class="fa fa-user pr-2 text-success"></i> Profile
+                                </a>
                                 <a class="dropdown-item d-flex nav-link" href="/admin/mail">
                                     <i class="fa fa-envelope pr-2 text-primary"></i> Inbox
+
                                     {# Access the 'mails' variable here from mail file #}
                                     <span class="badge badge-primary ml-auto">{{ mails|length }}</span>
                                 </a>
