@@ -4,13 +4,21 @@
     <div class="sidebar-content clearfix">
         <!-- Main Menu Button -->
         <div class="menu-icon">
-            <button id="nav_btn" class="pointer-open"><i class="fas fa-bars"></i></button>
+            <button id="nav_btn" class="pointer-open">MENU<i class="fas fa-bars"></i></button>
         </div> 
         <!-- Main Menu Button End -->
 
         <!-- My Image -->
         <div class="author-image theme-bg-color">
-            <img src="{{ asset("frontend/img/author/1.png") }}" alt="author-image">
+            {% if app.request.attributes.get('_route') == 'app_home' %}
+                <img src="{{ asset("frontend/img/author/myphoto.png") }}" alt="author-image-home">
+            {% elseif app.request.attributes.get('_route') == 'app_portfolio' %}
+                <img src="{{ asset("frontend/img/author/myphoto.png") }}" alt="author-image-other-route">
+            {% elseif app.request.attributes.get('_route') == 'app_resume' %}
+                <img src="{{ asset("frontend/img/author/myphoto.png") }}" alt="author-image-other-route">
+            {% else %}
+                <img src="{{ asset("frontend/img/author/mysidephoto.png") }}" alt="author-image-default">
+            {% endif %}
         </div> 
         <!-- My Image End -->
 
