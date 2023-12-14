@@ -76,8 +76,12 @@ class TestimonialController extends AbstractController
             return $this->redirectToRoute('app_testimonial');
         }
         
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/testimonial/create.html.twig', [
-            'testimonialForm' => $form->createView()
+            'testimonialForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 
@@ -121,9 +125,13 @@ class TestimonialController extends AbstractController
 
             return $this->redirectToRoute('app_testimonial');
         }
+
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
         
         return $this->render('backend/testimonial/edit.html.twig', [
-            'testimonialForm' => $form->createView()
+            'testimonialForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 

@@ -56,6 +56,18 @@ class TestimonialFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('linkedin', TextType::class, [
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Linkedin URL', 'type' => 'text'],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3, 
+                        'max' => 100, 
+                        'minMessage' => 'Your name must be at least {{ limit }} characters long.',
+                        'maxMessage' => 'Your name cannot be longer than {{ limit }} characters.',
+                    ]),
+                ],
+            ])
         ;
     }
 

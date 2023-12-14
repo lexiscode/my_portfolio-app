@@ -32,6 +32,9 @@ class Testimonial
     #[ORM\Column]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkedin = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -111,6 +114,18 @@ class Testimonial
     public function setUpdatedAt(\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    public function setLinkedin(?string $linkedin): static
+    {
+        $this->linkedin = $linkedin;
 
         return $this;
     }

@@ -204,62 +204,40 @@
     <div class="clients-testimonial subtitle">
         <h3 class="mb-40">.<span>cool</span> testimonials</h3>
         <div class="clients-testimonial-active owl-carousel">
-            <div class="single-testimonials">
-                <div class="client-image">
-                    <img src="{{ asset("frontend/img/clients/client-1.jpg") }}" alt="clients">
+
+        {% if testimonials|length > 0 %}
+            {% for testimonial in testimonials %}
+                <div class="single-testimonials">
+                    <div class="client-image">
+                        <img src="{{ testimonial.image }}" alt="clients">
+                    </div>
+                    <div class="feedback-text">
+                        <p class="client-feedback">{{ testimonial.comment }}</p>
+                        
+                        <p class="client-name">{{ testimonial.name }}, <span>{{ testimonial.position }}</span></p>
+                        <center>
+                        <a href="{{ testimonial.linkedin }}" class="pointer-href" target="_blank"><p><i class="fab fa-linkedin-in"></i></p></a>
+                        </center>
+
+                    </div>
                 </div>
-                <div class="feedback-text">
-                    <p class="client-feedback">As his tutor, Alexander excelled academically and demonstrated a strong aptitude for backend and API developments, particularly within the Symfony PHP framework.</p>
-                    <p class="client-name">Hennadii Shvedko, <span>Senior PHP Software Engineer</span></p>
-                </div>
-            </div>
-            <div class="single-testimonials">
-                <div class="client-image">
-                    <img src="{{ asset("frontend/img/clients/client-2.jpg") }}" alt="clients">
-                </div>
-                <div class="feedback-text">
-                    <p class="client-feedback">Alexander is a motivated hard-working developer, eager to work and study. He worked on complex tasks and always solved hard tasks easily.</p>
-                    <p class="client-name">Yauheni Radzivonau, <span>Senior PHP Software Engineer</span></p>
-                </div>
-            </div>
-            <div class="single-testimonials">
-                <div class="client-image">
-                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
-                </div>
-                <div class="feedback-text">
-                    <p class="client-feedback">Alex's ability to quickly grasp complex concepts and his dedication to mastering PHP sets him apart. He consistently demonstrated excellent problem-solving skills and contributed positively to group projects, showcasing not only technical proficiency but also effective communication and collaboration.</p>
-                    <p class="client-name">Raul Krivian, <span>PHP/Laravel Developer</span></p>
-                </div>
-            </div>
-            <div class="single-testimonials">
-                <div class="client-image">
-                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
-                </div>
-                <div class="feedback-text">
-                    <p class="client-feedback">Alex was a standout colleague with a protagonist personality who excelled in our PHP Backend Development internship at Jagaad Academy. His exceptional qualities, intelligence, and unyielding enthusiasm for learning truly set him apart.</p>
-                    <p class="client-name">Victoria-Elena Lazar, <span>Junior PHP Developer</span></p>
-                </div>
-            </div>
-            <div class="single-testimonials">
-                <div class="client-image">
-                    <img src="{{ asset("frontend/img/clients/client-3.jpg") }}" alt="clients">
-                </div>
-                <div class="feedback-text">
-                    <p class="client-feedback">Alex consistently exhibit a strong work ethic and demonstrate a commitment to excellence. His willingness to assist others through voluntary tutoring greatly enriched our academic environment, benefiting the entire team. He is a highly productive, hardworking, motivated, and proactive team player.</p>
-                    <p class="client-name">Demarillac Izere, <span>Junior Software Developer</span></p>
-                </div>
-            </div>
+            {% endfor %}
+            {% else %}
+                <p>No testimonials found.</p>
+        {% endif %}
+           
         </div>            
     </div> 
     <!-- Clients Testimonial End -->
     <!-- Logo Carousel -->
     <div class="clients-logo-carousel owl-carousel text-center">
+        <img src="{{ asset("frontend/img/clients/web.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/bootstrap.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/php.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/laravel.png") }}" alt="logo">
+        <img src="{{ asset("frontend/img/clients/symfony.png") }}" alt="logo">
         <img src="{{ asset("frontend/img/clients/1.png") }}" alt="logo">
-        <img src="{{ asset("frontend/img/clients/2.png") }}" alt="logo">
-        <img src="{{ asset("frontend/img/clients/3.png") }}" alt="logo">
         <img src="{{ asset("frontend/img/clients/4.png") }}" alt="logo">
-        <img src="{{ asset("frontend/img/clients/5.png") }}" alt="logo">
-        <img src="{{ asset("frontend/img/clients/6.png") }}" alt="logo">
     </div> 
     <!-- Logo Carousel End -->
 </main> 
