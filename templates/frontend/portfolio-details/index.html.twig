@@ -98,45 +98,25 @@
                     <div class="recent-posts subtitle mb-70">
                         <h3 class="mb-40">.<span>recent</span> posts</h3>
                         <ul>
+                        {% if blogs|length > 0 %}
+                            {% for blog in blogs %}
                             <li>
-                                <a href="#" class="pointer-href">
+                                <a href="/blog-detail/{{ blog.id }}" class="pointer-href">
                                     <div class="single-post clearfix">
                                         <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/1.jpg") }}" alt="post thumb">
+                                            <img src="{{ blog.image }}" alt="post thumb">
                                         </div>
                                         <div class="post-content">
-                                            <h5 class="body-font">Together we can make a difference</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
+                                            <h5 class="body-font">{{ blog.title }}</h5>
+                                            <span><i class="fas fa-calendar-alt"></i> {{ blog.created_at|date('d-m-Y')}}</span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="pointer-href">
-                                    <div class="single-post clearfix">
-                                        <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/2.jpg") }}" alt="post thumb">
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="body-font">We can work together for future</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="pointer-href">
-                                    <div class="single-post clearfix">
-                                        <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/3.jpg") }}" alt="post thumb">
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="body-font">It’s time to show as a best in world!</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                            {% endfor %}
+                        {% else %}
+                            <p>No blog found.</p>
+                        {% endif %}
                         </ul>
                     </div> 
                     <!-- Recent Posts End -->
