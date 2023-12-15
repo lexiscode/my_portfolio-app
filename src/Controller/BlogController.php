@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Blog;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,14 +30,22 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog-detail', name: 'app_blog_detail')]
-    public function blogDetail(): Response
+    #[Route('/blog-detail/{id}', name: 'app_blog_detail')]
+    public function blogDetail($id, Request $request): Response
     {
+        // Find the blog by its ID
+        $blog = $this->blogRepository->find($id);
+
         // Retrieve blogs from the database
         $blogs = $this->blogRepository->findAll();
 
+        if (!$blog){
+            throw $this->createNotFoundException('Blog not found');
+        }
+
         return $this->render('frontend/blog-details/index.html.twig', [
-            'blogs' => $blogs,
+            'blog' => $blog,
+            'blogs' => $blogs
         ]);
     }
 }

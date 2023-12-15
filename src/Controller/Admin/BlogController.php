@@ -130,7 +130,8 @@ class BlogController extends AbstractController
 
         return $this->render('backend/blog/edit.html.twig', [
             'blogForm' => $form->createView(),
-            'mails' => $mails
+            'mails' => $mails,
+            'blog' => $blog
         ]);
     }
 

@@ -54,6 +54,7 @@ class BlogFormType extends AbstractType
                 ],
             ])
             ->add('image', FileType::class, [
+                'required' => false,
                 'label' => 'Upload a cover image (jpeg, png)',
                 'attr' => ['class' => 'form-control'],
                 'mapped' => false,

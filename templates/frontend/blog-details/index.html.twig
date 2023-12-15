@@ -23,70 +23,33 @@
                             </div>
                             <div class="blog-overview">
                                 <ul>
-                                    <li><a href="#" class="newsfeed-calendar pointer-small"><i class="fas fa-calendar-alt"></i> 28 July 2019</a></li>
-                                    <li><a href="#" class="newsfeed-tag pointer-small"><i class="fas fa-tag"></i> Branding</a></li>
-                                    <li><a href="#" class="newsfeed-user pointer-small"><i class="fas fa-user"></i> Author</a></li>
-                                    <li><a href="#" class="newsfeed-comments pointer-small"><i class="fas fa-comments"></i> 3 Comments</a></li>
+                                    <li><a href="#" class="newsfeed-calendar pointer-small"><i class="fas fa-calendar-alt"></i> {{ blog.created_at|date('d-M-Y') }}</a></li>
+                                    <li><a href="#" class="newsfeed-tag pointer-small"><i class="fas fa-tag"></i> {{ blog.brand }}</a></li>
+                                    <li><a href="#" class="newsfeed-user pointer-small"><i class="fas fa-user"></i> {{ blog.author }}</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="blog-share-links">
                             <span>Share with</span>
                             <ul>
-                                <li><a href="#" class="pointer-href"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="pointer-href"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" class="pointer-href"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#" class="pointer-href"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?url={{ url('app_blog_detail', {'id': blog.id}, true) }}" class="pointer-href" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?text={{ blog.title }}%20-%20{{ url('app_blog_detail', {'id': blog.id}, true) }}" class="pointer-href" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.linkedin.com/shareArticle?url={{ url('app_blog_detail', {'id': blog.id}, true) }}" class="pointer-href" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flexiscode.com.ng/blog-detail%2F{{ blog.id }}%2F" class="pointer-href" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
                             </ul>
                         </div>
                     </div> <!-- Blog Header End -->
                     <!-- Blog Body -->
                     <div class="blog-body">
-                        <h3 class="theme-color">It’s time to show yourself as a best in world!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci
-                            in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue at,
-                            hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum.</p>
-                        <div class="blog-feature-image">
-                            <div class="row grid-2">
-                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 grid-item-2">
-                                    <div class="blog-content-image text-center">
-                                        <img src="{{ asset("frontend/img/blog/blog-details/1.jpg") }}" alt="blog image">
-                                        <div class="blog-popup-block">
-                                            <a href="{{ asset("frontend/img/blog/blog-details/1.jpg") }}" class="blog_content_popup pointer-open"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 grid-item-2">
-                                    <div class="blog-content-image text-center">
-                                        <img src="{{ asset("frontend/img/blog/blog-details/2.jpg") }}" alt="blog image">
-                                        <div class="blog-popup-block">
-                                            <a href="{{ asset("frontend/img/blog/blog-details/2.jpg") }}" class="blog_content_popup pointer-open"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 grid-item-2">
-                                    <div class="blog-content-image text-center">
-                                        <img src="{{ asset("frontend/img/blog/blog-details/3.jpg") }}" alt="blog image">
-                                        <div class="blog-popup-block">
-                                            <a href="{{ asset("frontend/img/blog/blog-details/3.jpg") }}" class="blog_content_popup pointer-open"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="body-highlight">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in
-                                orci in, pellentesque consequat tellus. Fusce mauris massa.</p>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci
-                            in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue at,
-                            hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum.</p>
+                        <h3 class="theme-color">{{ blog.title }}</h3>
+                        <p>{{ blog.content|raw }}</p>
+                        
                         <div class="body-tags mb-50 mt-30">
                             <h6 class="body-font">TAGS:</h6>
                             <div class="tag-keywords">
-                                <a href="#" class="pointer-small">branding</a>
-                                <a href="#" class="pointer-small">graphic-design</a>
-                                <a href="#" class="pointer-small">mockup</a>
+                                <a href="#" class="pointer-small">technology</a>
+                                <a href="#" class="pointer-small">story</a>
+                                <a href="#" class="pointer-small">news</a>
                             </div>
                         </div>
                     </div> 
@@ -99,45 +62,25 @@
                     <div class="recent-posts subtitle mb-70">
                         <h3 class="mb-40">.<span>recent</span> posts</h3>
                         <ul>
+                        {% if blogs|length > 0 %}
+                            {% for blog in blogs %}
                             <li>
-                                <a href="#" class="pointer-href">
+                                <a href="/blog-detail/{{ blog.id }}" class="pointer-href">
                                     <div class="single-post clearfix">
                                         <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/1.jpg") }}" alt="post thumb">
+                                            <img src="{{ blog.image }}" alt="post thumb">
                                         </div>
                                         <div class="post-content">
-                                            <h5 class="body-font">Together we can make a difference</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
+                                            <h5 class="body-font">{{ blog.title }}</h5>
+                                            <span><i class="fas fa-calendar-alt"></i> {{ blog.created_at|date('d-m-Y')}}</span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" class="pointer-href">
-                                    <div class="single-post clearfix">
-                                        <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/2.jpg") }}" alt="post thumb">
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="body-font">We can work together for future</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="pointer-href">
-                                    <div class="single-post clearfix">
-                                        <div class="post-thumb">
-                                            <img src="{{ asset("frontend/img/blog/blog-details/sidebar-thumb/3.jpg") }}" alt="post thumb">
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="body-font">It’s time to show as a best in world!</h5>
-                                            <span><i class="fas fa-calendar-alt"></i> 9 June 2019</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                            {% endfor %}
+                            {% else %}
+                                <p>No blog found.</p>
+                        {% endif %}
                         </ul>
                     </div> 
                     <!-- Recent Posts End -->
