@@ -18,60 +18,40 @@
     <div class="separator"></div>
     <div class="blog-wrapper">                    
         <div class="row grid-3">
-            <!-- Blog Single Container -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 grid-item-3">
-                <div class="newsfeed-container">
-                    <div class="newsfeed-image">
-                        <img src="{{ asset("frontend/img/blog/blog-grid/1.jpg") }}" alt="blog image">
-                        <div class="date-box">
-                            <span>28 JUN 2019</span>
-                        </div>
-                    </div>
-                    <div class="newsfeed-wrap">
-                        <div class="newsfeed-header">
-                            <a href="#" class="newsfeed-tag pointer-small"><i class="fas fa-tag"></i> Branding</a>
-                            <a href="#" class="newsfeed-user pointer-small"><i class="fas fa-user"></i> Admin</a>                                
-                        </div>
-                        <div class="newsfeed-content">
-                            <h4><a href="/blog-detail" class="pointer-href">It’s time to show yourself as a best in world!</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing Ut magna neque, pulvinar in orci in, pellentesque consequat tellus.
-                            </p>
-                        </div>
-                        <div class="blog-btn">
-                            <a href="/blog-detail" class="pointer-href">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <!-- Blog Single Container End -->
 
+        {% if blogs|length > 0 %}
+            {% for blog in blogs %}
             <!-- Blog Single Container -->
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 grid-item-3">
                 <div class="newsfeed-container">
                     <div class="newsfeed-image">
-                        <img src="{{ asset("frontend/img/blog/blog-grid/2.jpg") }}" alt="blog image">
+                        <img src="{{ blog.image }}" alt="blog image">
                         <div class="date-box">
-                            <span>28 JUN 2019</span>
+                            <span>{{ blog.created_at|date('d-m-Y')}}</span>
                         </div>
                     </div>
                     <div class="newsfeed-wrap">
                         <div class="newsfeed-header">
-                            <a href="#" class="newsfeed-tag pointer-small"><i class="fas fa-tag"></i> Branding</a>
-                            <a href="#" class="newsfeed-user pointer-small"><i class="fas fa-user"></i> Admin</a>                                
+                            <a href="#" class="newsfeed-tag pointer-small"><i class="fas fa-tag"></i> {{ blog.brand }}</a>
+                            <a href="https://linkedin.com/in/alexander-nwokorie" class="newsfeed-user pointer-small" target="_blank">
+                            <i class="fas fa-user"></i> {{ blog.author }}
+                            </a>                                
                         </div>
                         <div class="newsfeed-content">
-                            <h4><a href="blog-details.html" class="pointer-href">It’s time to show yourself as a best in world!</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing Ut magna neque, pulvinar in orci in, pellentesque consequat tellus.
-                            </p>
+                            <h4><a href="/blog-detail/{{ blog.id }}" class="pointer-href">{{ blog.title }}</a></h4>
+                            <p></p>
                         </div>
                         <div class="blog-btn">
-                            <a href="blog-details.html" class="pointer-href">Read More</a>
+                            <a href="/blog-detail/{{ blog.id }}" class="pointer-href">Read More</a>
                         </div>
                     </div>
                 </div>
-            
             </div> 
             <!-- Blog Single Container End -->
+            {% endfor %}
+            {% else %}
+                <p>No blog found.</p>
+        {% endif %}
 
         </div>
         <!-- Pagination -->

@@ -10,12 +10,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AboutController extends AbstractController
 {
-    private $em;
+   
     private $testimonialRepository;
 
     public function __construct(EntityManagerInterface $em)
     {
-        $this->em = $em;
         $this->testimonialRepository = $em->getRepository(Testimonial::class);
     }
 
@@ -30,3 +29,4 @@ class AboutController extends AbstractController
         ]);
     }
 }
+

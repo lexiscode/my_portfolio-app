@@ -75,9 +75,13 @@ class BlogController extends AbstractController
 
             return $this->redirectToRoute('app_admin_blog');
         }
+
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
         
         return $this->render('backend/blog/create.html.twig', [
-            'blogForm' => $form->createView()
+            'blogForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 
@@ -121,8 +125,12 @@ class BlogController extends AbstractController
             return $this->redirectToRoute('app_admin_blog');
         }
         
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
+
         return $this->render('backend/blog/edit.html.twig', [
-            'blogForm' => $form->createView()
+            'blogForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 
