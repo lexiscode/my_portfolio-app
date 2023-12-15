@@ -82,9 +82,13 @@ class PortfolioController extends AbstractController
 
             return $this->redirectToRoute('app_admin_portfolio');
         }
+
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
         
         return $this->render('backend/portfolio/create.html.twig', [
-            'portfolioForm' => $form->createView()
+            'portfolioForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 
@@ -152,9 +156,13 @@ class PortfolioController extends AbstractController
 
             return $this->redirectToRoute('app_admin_portfolio');
         }
+
+        // Retrieve mails from the database
+        $mails = $this->mailRepository->findAll();
         
         return $this->render('backend/portfolio/edit.html.twig', [
-            'portfolioForm' => $form->createView()
+            'portfolioForm' => $form->createView(),
+            'mails' => $mails
         ]);
     }
 

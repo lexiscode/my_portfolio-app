@@ -17,7 +17,8 @@
         employed. Feel free to explore, and should you have any questions or feedback, don't hesitate 
         to reach out. Let's delve into the details of innovation and problem-solving.
         </p>
-    </div> <!-- Page Header End -->
+    </div> 
+    <!-- Page Header End -->
     <div class="separator"></div>
     <div class="portfolio-details-wrapper">
         <div class="row">
@@ -30,66 +31,33 @@
                         </div>
                         <div class="project-overview">
                             <ul>
-                                <li>Date created :<a href="#" class="pointer-small"> 9 July 2019</a></li>
-                                <li>Client :<a href="#" class="pointer-small"> XenMark Inc.</a></li>
-                                <li>Web :<a href="#" class="pointer-small"> www.xenmark.com</a></li>
-                                <li>Category :<a href="#" class="pointer-small"> Branding</a></li>
+                                <li>Date created :<a href="#" class="pointer-small"> {{ portfolio.created_at|date('d-m-Y') }}</a></li>
+                                <li>Client :<a href="#" class="pointer-small"> {{ portfolio.client }}</a></li>
+                                <li>Category :<a href="#" class="pointer-small"> {{ portfolio.category }}</a></li>
                             </ul>
                         </div>
                     </div> 
                     <!-- Project Short Info End -->
                     <!-- Project Body -->
                     <div class="project-body">
-                        <h3 class="theme-color">We make a beautiful world for peace and easy life</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci
-                            in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue at,
-                            hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum. Ut ac mi a ex convallis
-                            luctus.
-                        </p>
+                        <h3 class="theme-color">{{ portfolio.name }}</h3>
+                        <p>{{ portfolio.note }}</p>
                         <!-- Project Video -->
                         <div class="body-feature-video text-center">
-                            <a href="https://www.youtube.com/watch?v=aqz-KE-bpKQ" class="popup_video pointer-large"><i class="fas fa-play"></i></a>
+                            <a href="{{ portfolio.link }}" class="popup_video pointer-large"><i class="fas fa-play"></i></a>
                         </div> 
                         <!-- Project Video End -->
-                        <div class="body-highlight">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in
-                                orci in, pellentesque consequat tellus. Fusce mauris massa.</p>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna neque, pulvinar in orci
-                            in, pellentesque consequat tellus. Fusce mauris massa, pellentesque nec augue at,
-                            hendrerit rutrum ex. Cras venenatis vulputate nisi ut elementum.</p>
-                        <!-- Portfolio Feature Image -->
-                        <div class="portfolio-feature-image">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="feature-single-image text-center">
-                                        <img src="{{ asset("frontend/img/portfolio/portfolio-details/1.jpg") }}" alt="portfolio image">
-                                        <div class="portfolio-popup-block">
-                                            <a href="{{ asset("frontend/img/portfolio/portfolio-details/1.jpg") }}" class="portfolio_feature_popup pointer-open"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="feature-single-image text-center">
-                                        <img src="{{ asset("frontend/img/portfolio/portfolio-details/3.jpg") }}" alt="portfolio image">
-                                        <div class="portfolio-popup-block">
-                                            <a href="{{ asset("frontend/img/portfolio/portfolio-details/3.jpg") }}" class="portfolio_feature_popup pointer-open"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- Portfolio Feature Image End -->
+                        
                         <!-- Tags -->
                         <div class="body-tags">
-                            <h6 class="body-font">TAGS:</h6>
+                            <h6 class="body-font">TECHNOLOGIES:</h6>
                             <div class="tag-keywords">
-                                <a href="#" class="pointer-small">branding</a>
-                                <a href="#" class="pointer-small">graphic-design</a>
-                                <a href="#" class="pointer-small">mockup</a>
+                                <a href="#" class="pointer-small">{{ portfolio.technology }}</a>
                             </div>
-                        </div> <!-- Tags End -->
-                    </div> <!-- Project Body End -->
+                        </div> 
+                        <!-- Tags End -->
+                    </div> 
+                    <!-- Project Body End -->
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4">
