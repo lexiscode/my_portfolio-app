@@ -53,13 +53,13 @@ class PortfolioFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('technology', TextType::class, [
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Enter the technologies used', 'type' => 'text'],
+            ->add('cat', TextType::class, [
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Enter either cat1 cat2 cat3 or cat4 with a space', 'type' => 'text'],
                 'constraints' => [
                     new NotBlank(),
                     new Length([
-                        'min' => 3, 
-                        'max' => 100, 
+                        'min' => 4, 
+                        'max' => 20, 
                         'minMessage' => 'Your name must be at least {{ limit }} characters long.',
                         'maxMessage' => 'Your name cannot be longer than {{ limit }} characters.',
                     ]),
@@ -77,21 +77,27 @@ class PortfolioFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('first_image', FileType::class, [
+            ->add('image', FileType::class, [
                 'required' => false,
-                'label' => 'Upload a first image (jpeg, png)',
-                'attr' => ['class' => 'form-control'],
-                'mapped' => false,
-            ])
-            ->add('second_image', FileType::class, [
-                'required' => false,
-                'label' => 'Upload another image, if necessary (jpeg, png)',
+                'label' => 'Upload an image (jpeg, png)',
                 'attr' => ['class' => 'form-control'],
                 'mapped' => false,
             ])
             ->add('link', TextType::class, [
                 'required' => false,
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Paste any video url here', 'type' => 'text'],
+                'constraints' => [
+                    new Length([
+                        'min' => 3, 
+                        'max' => 100, 
+                        'minMessage' => 'Your name must be at least {{ limit }} characters long.',
+                        'maxMessage' => 'Your name cannot be longer than {{ limit }} characters.',
+                    ]),
+                ],
+            ])
+            ->add('site_url', TextType::class, [
+                'required' => false,
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Enter the project url', 'type' => 'text'],
                 'constraints' => [
                     new Length([
                         'min' => 3, 

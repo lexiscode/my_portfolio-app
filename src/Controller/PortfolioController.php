@@ -27,8 +27,18 @@ class PortfolioController extends AbstractController
         // Retrieve blogs from the database
         $portfolios = $this->portfolioRepository->findAll();
 
+        // Retrieve portfolios with by category names
+        $vanilla = $this->portfolioRepository->findBy(['category' => 'Vanilla PHP']);
+        $laravel = $this->portfolioRepository->findBy(['category' => 'Laravel']);
+        $symfony = $this->portfolioRepository->findBy(['category' => 'Symfony']);
+        $apis = $this->portfolioRepository->findBy(['category' => 'APIs']);
+
         return $this->render('frontend/portfolio/index.html.twig', [
             'portfolios' => $portfolios,
+            'vanilla' => $vanilla,
+            'laravel' => $laravel,
+            'symfony' => $symfony,
+            'apis' => $apis
         ]);
     }
 

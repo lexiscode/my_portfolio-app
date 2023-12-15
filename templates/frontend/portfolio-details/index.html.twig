@@ -31,31 +31,27 @@
                         </div>
                         <div class="project-overview">
                             <ul>
-                                <li>Date created :<a href="#" class="pointer-small"> {{ portfolio.created_at|date('d-m-Y') }}</a></li>
-                                <li>Client :<a href="#" class="pointer-small"> {{ portfolio.client }}</a></li>
-                                <li>Category :<a href="#" class="pointer-small"> {{ portfolio.category }}</a></li>
+                                <li>Date created :<a href="#"> {{ portfolio.created_at|date('d-m-Y') }}</a></li>
+                                <li>Client :<a href="#"> {{ portfolio.client }}</a></li>
+                                <li>Category :<a href="#"> {{ portfolio.category }}</a></li>
+                                <li>View site :<a href="{{ portfolio.site_url }}" class="pointer-small"> CLICK ME</a></li>
                             </ul>
                         </div>
                     </div> 
                     <!-- Project Short Info End -->
                     <!-- Project Body -->
                     <div class="project-body">
-                        <h3 class="theme-color">{{ portfolio.name }}</h3>
-                        <p>{{ portfolio.note }}</p>
+
+                        <a href="{{ portfolio.site_url }}" class="pointer-small"><h3 class="theme-color">{{ portfolio.name }}</h3></a>
+                        
                         <!-- Project Video -->
                         <div class="body-feature-video text-center">
                             <a href="{{ portfolio.link }}" class="popup_video pointer-large"><i class="fas fa-play"></i></a>
                         </div> 
                         <!-- Project Video End -->
+
+                        <p>{{ portfolio.note|raw }}</p>
                         
-                        <!-- Tags -->
-                        <div class="body-tags">
-                            <h6 class="body-font">TECHNOLOGIES:</h6>
-                            <div class="tag-keywords">
-                                <a href="#" class="pointer-small">{{ portfolio.technology }}</a>
-                            </div>
-                        </div> 
-                        <!-- Tags End -->
                     </div> 
                     <!-- Project Body End -->
                 </div>

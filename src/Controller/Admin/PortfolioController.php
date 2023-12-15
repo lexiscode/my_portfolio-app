@@ -68,11 +68,8 @@ class PortfolioController extends AbstractController
                 $newPortfolio->setCategory('APIs');
             }
 
-            // Upload first image
-            $this->uploadImage($form, 'first_image', $newPortfolio);
-
-            // Upload second image
-            $this->uploadImage($form, 'second_image', $newPortfolio);
+            // Upload "first or second" image (intentional chose to use this method for future reference)
+            $this->uploadImage($form, 'image', $newPortfolio);
 
             $this->em->persist($newPortfolio);
             $this->em->flush();
@@ -143,10 +140,7 @@ class PortfolioController extends AbstractController
             }
 
             // Upload first image
-            $this->uploadImage($form, 'first_image', $newPortfolio);
-
-            // Upload second image
-            $this->uploadImage($form, 'second_image', $newPortfolio);
+            $this->uploadImage($form, 'image', $newPortfolio);
 
             $this->em->persist($newPortfolio);
             $this->em->flush();
@@ -162,6 +156,7 @@ class PortfolioController extends AbstractController
         
         return $this->render('backend/portfolio/edit.html.twig', [
             'portfolioForm' => $form->createView(),
+            'portfolio' => $portfolio,
             'mails' => $mails
         ]);
     }

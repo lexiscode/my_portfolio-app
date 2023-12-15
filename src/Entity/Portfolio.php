@@ -25,25 +25,25 @@ class Portfolio
     private ?string $note = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $technology = null;
+    private ?string $cat = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $client = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    public ?string $first_image = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    public ?string $second_image = null;
+    public ?string $image = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    public ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updated_at = null;
+
+    #[ORM\Column(length: 255)]
+    public ?string $site_url = null;
 
     public function __construct()
     {
@@ -92,14 +92,14 @@ class Portfolio
         return $this;
     }
 
-    public function getTechnology(): ?string
+    public function getCat(): ?string
     {
-        return $this->technology;
+        return $this->cat;
     }
 
-    public function setTechnology(string $technology): static
+    public function setCat(string $cat): static
     {
-        $this->technology = $technology;
+        $this->cat = $cat;
 
         return $this;
     }
@@ -116,26 +116,14 @@ class Portfolio
         return $this;
     }
 
-    public function getFirstImage(): ?string
+    public function getImage(): ?string
     {
-        return $this->first_image;
+        return $this->image;
     }
 
-    public function setFirstImage(?string $first_image): static
+    public function setImage(?string $image): static
     {
-        $this->first_image = $first_image;
-
-        return $this;
-    }
-
-    public function getSecondImage(): ?string
-    {
-        return $this->second_image;
-    }
-
-    public function setSecondImage(?string $second_image): static
-    {
-        $this->second_image = $second_image;
+        $this->image = $image;
 
         return $this;
     }
@@ -172,6 +160,18 @@ class Portfolio
     public function setUpdatedAt(\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getSiteUrl(): ?string
+    {
+        return $this->site_url;
+    }
+
+    public function setSiteUrl(string $site_url): static
+    {
+        $this->site_url = $site_url;
 
         return $this;
     }

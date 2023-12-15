@@ -62,7 +62,6 @@
                                         <th class="border-top-0">#</th>
                                         <th class="border-top-0">Name</th>
                                         <th class="border-top-0">Category</th>
-                                        <th class="border-top-0">Technologies Used</th>
                                         <th class="border-top-0">Action</th>
                                     </tr>
                                 </thead>
@@ -73,12 +72,11 @@
                                             <td>{{ portfolio.id }}</td>
                                             <td>
                                                 <div class="bg-img">
-                                                    <img class="img-fluid" src="{{ portfolio.first_image }}" alt="photo">
+                                                    <img class="img-fluid" src="{{ portfolio.image }}" alt="photo">
                                                 </div>
                                                 <p>{{ portfolio.name }}</p>
                                             </td>
                                             <td>{{ portfolio.category }}</td>
-                                            <td>{{ portfolio.technology }}</td>
                                             <td>
                                                 <a href="/admin/portfolio/edit/{{ portfolio.id }}" class="mr-2"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i></a>
                                                 <a href="/admin/portfolio/delete/{{ portfolio.id }}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"></i></a>

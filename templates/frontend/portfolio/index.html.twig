@@ -22,11 +22,11 @@
             <div class="col-xl-12">
                 <!-- Filter Buttons -->
                 <div class="button-group portfolio-btn text-right mb-40">
-                    <button data-toggle="tooltip" data-placement="top" title="16 Items" class="active pointer-href" data-filter="*">All</button>
-                    <button data-toggle="tooltip" data-placement="top" title="7 Items" class="pointer-href" data-filter=".cat1">Vanilla PHP</button>
-                    <button data-toggle="tooltip" data-placement="top" title="5 Items" class="pointer-href" data-filter=".cat2">Laravel</button>
-                    <button data-toggle="tooltip" data-placement="top" title="3 Items" class="pointer-href" data-filter=".cat3">Symfony</button>
-                    <button data-toggle="tooltip" data-placement="top" title="4 Items" class="pointer-href" data-filter=".cat4">APIs</button>
+                    <button data-toggle="tooltip" data-placement="top" title="{{ portfolios|length }} Items" class="active pointer-href" data-filter="*">All</button>
+                    <button data-toggle="tooltip" data-placement="top" title="{{ vanilla|length }} Items" class="pointer-href" data-filter=".cat1">Vanilla PHP</button>
+                    <button data-toggle="tooltip" data-placement="top" title="{{ laravel|length }} Items" class="pointer-href" data-filter=".cat2">Laravel</button>
+                    <button data-toggle="tooltip" data-placement="top" title="{{ symfony|length }} Items" class="pointer-href" data-filter=".cat3">Symfony</button>
+                    <button data-toggle="tooltip" data-placement="top" title="{{ apis|length }} Items" class="pointer-href" data-filter=".cat4">APIs</button>
                 </div> <!-- Filter Buttons End -->
             </div>
         </div>
@@ -36,11 +36,11 @@
         {% if portfolios|length > 0 %}
             {% for portfolio in portfolios %}
 
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 grid-item cat1 cat2 cat3 cat4">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 grid-item {{ portfolio.cat }}">
                 <div class="portfolio-image-block">
-                    <img src="{{ portfolio.first_image }}" alt="portfolio image">
+                    <img src="{{ portfolio.image }}" alt="portfolio image">
                     <div class="portfolio-image-info">
-                        <a href="{{ portfolio.first_image }}" class="gallery_popup pointer-open"><i class="fas fa-search"></i></a>
+                        <a href="{{ portfolio.image }}" class="gallery_popup pointer-open"><i class="fas fa-search"></i></a>
                         <h4 class="body-font">{{ portfolio.name }}</h4>
                     </div>
                     <div class="image-hover-btn">
