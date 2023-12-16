@@ -54,20 +54,17 @@
         {% endif %}
 
         </div>
+
         <!-- Pagination -->
         <div class="pagination-block">
             <nav>
-                <ul>
-                    <li><a href="#" class="pointer-href"><i class="fas fa-chevron-left"></i> Prev</a></li>
-                    <li><a href="#" class="pointer-href">1</a></li>
-                    <li><a href="#" class="active pointer-href">2</a></li>
-                    <li><a href="#" class="pointer-href">3</a></li>
-                    <li><a href="#" class="pointer-href">4</a></li>
-                    <li><a href="#" class="pointer-href">Next <i class="fas fa-chevron-right"></i></a></li>
-                </ul>
+                {{ knp_pagination_render(pagination) }}
             </nav>
-        </div> 
+        </div>
         <!-- Pagination End -->
+
+
+        
     </div>
 </main> 
 <!-- Single page end -->
