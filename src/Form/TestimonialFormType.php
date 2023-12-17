@@ -42,6 +42,7 @@ class TestimonialFormType extends AbstractType
                 ],
             ])
             ->add('image', FileType::class, [
+                'required' => false,
                 'label' => 'Upload a picture (jpeg, png)',
                 'attr' => ['class' => 'form-control'],
                 'mapped' => false,

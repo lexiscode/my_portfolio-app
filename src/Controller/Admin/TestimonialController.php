@@ -131,7 +131,8 @@ class TestimonialController extends AbstractController
         
         return $this->render('backend/testimonial/edit.html.twig', [
             'testimonialForm' => $form->createView(),
-            'mails' => $mails
+            'mails' => $mails,
+            'testimonial' => $testimonial
         ]);
     }
 
