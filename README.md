@@ -45,14 +45,14 @@ This is a personal portfolio web application built with the Symfony framework. T
 3. Set up the database:
 
     ```bash
-    php bin/console doctrine:database:create
-    php bin/console doctrine:migrations:migrate
+    symfony console doctrine:database:create
+    symfony console doctrine:migrations:migrate
     ```
 
 4. Start the Symfony server:
 
     ```bash
-    php bin/console server:run
+    symfony server:start
     ```
 
 5. Access the app at [http://localhost:8000](http://localhost:8000) in your web browser.
